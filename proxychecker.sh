@@ -1,5 +1,5 @@
 #!/bin/bash
-#Filename: proxychecker.sh
+#Filename: proxycheck.sh
 #Purpose: Simple Proxy Checker
 
 echo "Welcome to $0, a simple proxy checker"
@@ -14,7 +14,8 @@ touch $failurefile
 echo "Checking proxies from the list file $list"
 for i in $(cat $list)
 do
-    results=$(curl -fsx $i google.com)
+    results=$(curl -fsx $i google.com &) 
+    shift #multi-threading
     if  [ -z "$results" ]
     then
         echo $i >> $failurefile
@@ -22,7 +23,7 @@ do
         echo $i >> $resultfile
     fi
 done
-
+wait 
 echo "Finished after $SECONDS seconds"
 echo "Good proxies written to $resultfile"
 echo "Bad proxies written to $failurefile"
