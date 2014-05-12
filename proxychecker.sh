@@ -1,5 +1,5 @@
 #!/bin/bash
-#Filename: proxycheck.sh
+#Filename: proxychecker.sh
 #Purpose: Simple Proxy Checker
 
 echo "Welcome to $0, a simple proxy checker"
