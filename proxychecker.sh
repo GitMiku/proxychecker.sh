@@ -15,7 +15,7 @@ echo "Checking proxies from the list file $list"
 for i in $(cat $list)
 do
     results=$(curl -fsx $i google.com &) 
-    shift #multi-threading
+    shift 
     if  [ -z "$results" ]
     then
         echo $i >> $failurefile
